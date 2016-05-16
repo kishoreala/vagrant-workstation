@@ -1,0 +1,12 @@
+---
+  :backends:
+    - yaml
+
+  :hierarchy:
+    - "${operatingsystem}"
+    - "nodes/%{clientcert}"
+    - common
+
+  :yaml:
+
+    :datadir: 
