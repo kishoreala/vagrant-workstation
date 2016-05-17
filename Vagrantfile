@@ -14,18 +14,21 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "vagrant-win2012r2"
   config.vm.communicator = 'winrm'
-  config.vm.username = 'vagrant'
   config.vm.boot_timeout = 600
   config.vm.hostname = 'vagrant-win2012r2'
   config.vm.network :private_network, ip: '10.20.1.15'
-  config.vm.network :forwarded_port, host: 3260, guest: 3389, auto_corret: true
-
+  config.vm.network :forwarded_port, host: 3389, guest: 3389, auto_correct: true
+  config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+  config.vm.provision :shell, path: "scripts/enable-rdp.bat"
+#  config.vm.provision :shell, inline: 'robocopy /mir c:\vagrant c:\puppet /xd .git /NFL /NDL /NJH /NJS'
+#  config.vm.provision :shell, path: 'scripts/puppet-provisioning.bat'
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "."
-    puppet.manifest_file = "site.pp"
-    puppet.module_path = ["modules", "vendor"]
-    puppet.hiera_config_path = "hiera.yaml"
-    puppet.options = "--verbose"
+    puppet.environment = "development"
+    puppet.environment_path = "."
+  #  puppet.manifest_file = "site.pp"
+  #  puppet.module_path = ["modules", "vendor"]
+  #  puppet.hiera_config_path = "hiera.yaml"
+   puppet.options = "--verbose"
   end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -56,13 +59,14 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
+  config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
+     vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+     vb.memory = 2048
+     vb.cpus = 2
+   end
   #
   # View the documentation for the provider you are using for more
   # information on available options.

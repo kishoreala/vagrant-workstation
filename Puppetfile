@@ -1,5 +1,5 @@
 forge 'http://forge.puppetlabs.com'
-moduledir 'vendor'
+moduledir 'development/modules'
 
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git'
@@ -16,9 +16,6 @@ mod 'inifile',
 mod 'concat',
   :git => 'https://github.com/puppetlabs/puppetlabs-concat.git'
 
-mod 'hiera',
-  :git => 'https://github.com/hunner/puppet-hiera.git'
-
 mod 'ruby',
   :git => 'https://github.com/puppetlabs/puppetlabs-ruby.git'
 
@@ -33,12 +30,6 @@ mod 'git',
 
 mod 'make',
   :git => 'https://github.com/croddy/puppet-make.git'
-
-mod 'pe_gem',
-  :git => 'https://github.com/puppetlabs/puppetlabs-pe_gem.git'
-
-mod 'r10k',
-  :git => 'https://github.com/acidprime/r10k.git'
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java.git'
@@ -58,5 +49,18 @@ mod 'azure',
 mod 'dsc',
   :git => 'https://github.com/puppetlabs/puppetlabs-dsc.git'
 
+mod 'chocolatey',
+  :git => 'https://github.com/chocolatey/puppet-chocolatey.git'
 
+mod 'registry',
+  :git => 'https://github.com/puppetlabs/puppetlabs-registry'
+
+mod 'windows_env',
+  :git => 'https://github.com/badgerious/puppet-windows-env'
+
+mod 'reboot',
+  :git => 'https://github.com/puppetlabs/puppetlabs-reboot'
+
+mod 'powershell',
+  :git => 'https://github.com/puppetlabs/puppetlabs-powershell'
 ###############################################################################
