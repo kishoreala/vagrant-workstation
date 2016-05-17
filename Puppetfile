@@ -1,5 +1,5 @@
 forge 'http://forge.puppetlabs.com'
-moduledir 'development/modules'
+moduledir 'development/vendor'
 
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git'
