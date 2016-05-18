@@ -1,7 +1,5 @@
 #
-#
-#
-class chrome (String $version = '50.0.2661.94') {
+class chrome (String $version = '') {
 
   package { 'googlechrome':
     ensure   => $version,

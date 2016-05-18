@@ -16,19 +16,18 @@ Vagrant.configure(2) do |config|
   config.vm.communicator = 'winrm'
   config.vm.boot_timeout = 600
   config.vm.hostname = 'vagrant-win2012r2'
-  config.vm.network :private_network, ip: '10.20.1.15'
+  config.vm.network :private_network, :auto_network => true
   config.vm.network :forwarded_port, host: 3389, guest: 3389, auto_correct: true
-  config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
-  config.vm.provision :shell, path: "scripts/enable-rdp.bat"
+  #config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+  #config.vm.provision :shell, path: "scripts/enable-rdp.bat"
 #  config.vm.provision :shell, inline: 'robocopy /mir c:\vagrant c:\puppet /xd .git /NFL /NDL /NJH /NJS'
 #  config.vm.provision :shell, path: 'scripts/puppet-provisioning.bat'
   config.vm.provision :puppet do |puppet|
     puppet.environment = "development"
     puppet.environment_path = "."
-  #  puppet.manifest_file = "site.pp"
-  #  puppet.module_path = ["modules", "vendor"]
-  #  puppet.hiera_config_path = "hiera.yaml"
-   puppet.options = "--verbose"
+    puppet.hiera_config_path = "hiera.yaml"
+    puppet.working_directory = "/tmp/vagrant-puppet/environments"
+    puppet.options = "--verbose"
   end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
