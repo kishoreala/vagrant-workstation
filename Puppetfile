@@ -25,9 +25,6 @@ mod 'gcc',
 mod 'vcsrepo',
   :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo.git'
 
-mod 'git',
-  :git => 'https://github.com/puppetlabs/puppetlabs-git.git'
-
 mod 'make',
   :git => 'https://github.com/croddy/puppet-make.git'
 
@@ -63,4 +60,7 @@ mod 'reboot',
 
 mod 'powershell',
   :git => 'https://github.com/puppetlabs/puppetlabs-powershell'
+
+mod 'local_security_policy',
+  :git => 'https://github.com/ayohrling/local_security_policy.git'
 ###############################################################################
